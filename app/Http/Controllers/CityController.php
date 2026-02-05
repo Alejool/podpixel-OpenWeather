@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\City;
 use App\Services\OpenWeatherService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\ValidationException;
 
 class CityController extends Controller
@@ -31,10 +32,10 @@ class CityController extends Controller
     {
         try {
             $validated = $request->validate([
-                'nombre' => 'required|string|max:255',
+                'nombre' => 'required|string|max:255|unique:cities,nombre',
                 'latitud' => 'required|numeric|between:-90,90',
                 'longitud' => 'required|numeric|between:-180,180',
-                'imagen' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+                'imagen' => 'required|image|mimes:jpeg,png,jpg,gif|max:5120',
             ]);
 
             if ($request->hasFile('imagen')) {
