@@ -9,5 +9,5 @@ Route::get('/', function () {
     return redirect()->route('cities.index');
 });
 
-Route::resource('cities', CityController::class)->only(['index', 'store', 'create']);
+Route::resource('cities', CityController::class)->only(['index', 'store', 'create', 'edit', 'update']);
 Route::get('cities/{city}/weather', [CityController::class, 'getWeather'])->name('cities.weather');
