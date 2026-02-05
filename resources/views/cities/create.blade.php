@@ -2,7 +2,7 @@
 
 @section('content')
 <div >
-    <div class="flex justify-between items-center gap-8 py-4">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-8 py-4">
         <a href="{{ route('cities.index') }}" class="px-6 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors text-xl md:text-2xl text-center inline-block">
             Volver
         </a>
@@ -36,7 +36,7 @@
                     <div>
                         <label for="latitud" class="block mb-2 text-lg font-semibold text-gray-700  tracking-wider">Latitud (-90 a 90)</label>
                         <input type="number" step="any" id="latitud" name="latitud" value="{{ old('latitud') }}"
-                            class="w-full p-4 bg-gray-50 border-2 text-gray-900 text-xl rounded-xl focus:ring-orange-500 focus:border-orange-500 @error('latitud') border-red-500  @enderror block transition-all"
+                            class="w-full p-4 bg-gray-50 border-1 text-gray-900 text-xl rounded-xl focus:ring-orange-500 focus:border-orange-500 @error('latitud') border-red-500  @enderror block transition-all"
                             placeholder="Ej: 4.7110" required>
                         @error('latitud') <p class="mt-2 text-sm text-red-600 font-medium">{{ $message }}</p> @enderror
                     </div>
@@ -44,7 +44,7 @@
                     <div>
                         <label for="longitud" class="block mb-2 text-lg font-semibold text-gray-700  tracking-wider">Longitud (-180 a 180)</label>
                         <input type="number" step="any" id="longitud" name="longitud" value="{{ old('longitud') }}"
-                            class="w-full p-4 bg-gray-50 border-2 text-gray-900 text-xl rounded-xl focus:ring-orange-500 focus:border-orange-500 @error('longitud') border-red-500  @enderror block transition-all"
+                            class="w-full p-4 bg-gray-50 border-1 text-gray-900 text-xl rounded-xl focus:ring-orange-500 focus:border-orange-500 @error('longitud') border-red-500  @enderror block transition-all"
                             placeholder="Ej: -74.0721" required>
                         @error('longitud') <p class="mt-2 text-sm text-red-600 font-medium">{{ $message }}</p> @enderror
                     </div>
@@ -53,14 +53,14 @@
                     <div>
                         <label for="nombre" class="block mb-2 text-lg font-semibold text-gray-700  tracking-wider">Nombre de la Ciudad</label>
                         <input type="text" id="nombre" name="nombre" value="{{ old('nombre') }}"
-                            class="w-full p-4 bg-gray-50 border-2 text-gray-900 text-lg rounded-xl focus:ring-orange-500 focus:border-orange-500 @error('nombre') border-red-500  @enderror block transition-all"
+                            class="w-full p-4 bg-gray-50 border-1 text-gray-900 text-lg rounded-xl focus:ring-orange-500 focus:border-orange-500 @error('nombre') border-red-500  @enderror block transition-all"
                             placeholder="Ej: Bogotá" required>
                         @error('nombre') <p class="mt-2 text-sm text-red-600 font-medium">{{ $message }}</p> @enderror
                     </div>
 
                     <div class="grow flex flex-col">
                         <label class="block mb-2 text-lg font-semibold text-gray-700  tracking-wider">Imagen de la Ciudad</label>
-                        <div id="dropzone" class="relative group cursor-pointer grow border-2 border-orange-200 border-dashed rounded-2xl bg-gray-50 hover:bg-orange-50 transition-colors duration-200 overflow-hidden flex items-center justify-center min-h-[200px]">
+                        <div id="dropzone" class="relative group cursor-pointer grow border-1 border-orange-200 border-dashed rounded-2xl bg-gray-50 hover:bg-orange-50 transition-colors duration-200 overflow-hidden flex items-center justify-center min-h-[200px]">
                             <div id="dropzone-preview" class="hidden absolute inset-0 rounded-2xl overflow-hidden bg-white items-center justify-center">
                                 <img id="preview-img" src="" class="h-full w-full object-cover">
                                 <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
