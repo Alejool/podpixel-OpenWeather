@@ -7,15 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 class City extends Model
 {
 
+    protected $table = 'cities';
+
     protected $fillable = [
-        'name',
-        'latitude',
-        'longitude',
-        'image',
+        'nombre',
+        'latitud',
+        'longitud',
+        'imagen',
     ];
 
     protected $casts = [
-        'latitude' => 'float',
-        'longitude' => 'float',
+        'latitud' => 'float',
+        'longitud' => 'float',
     ];
 }
