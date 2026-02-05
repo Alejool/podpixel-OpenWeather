@@ -1,5 +1,5 @@
 @props(['city' => null])
-<div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-10 p-10">
     <div class="space-y-6">
         <div>
             <label for="latitud" class="block mb-2 text-lg font-semibold text-gray-700  tracking-wider">Latitud (-90 a 90)</label>
