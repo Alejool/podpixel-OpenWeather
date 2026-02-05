@@ -1,9 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<pre>
-<!-- {{ print_r($cities->toArray(), true) }} -->
-</pre>
+
 <div class="px-4">
     <div class="flex justify-end">
         <a href="{{ route('cities.create') }}" class="px-6 py-3 mb-4 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors text-xl md:text-2xl">
@@ -15,12 +13,12 @@
         <span id="ajax-error-message" class="block sm:inline"></span>
     </div>
 
-    <div class="md:flex md:flex-row gap-12 justify-center py-12">
-        <div class="space-y-3 h-[700px] ">
+    <div class="md:flex md:flex-row gap-6 justify-center pb-12">
+        <div class="space-y-3 h-[650px] ">
             <h2 class="text-4xl mb-6 font-bold text-gray-800">Ciudades Registradas</h2>
             <x-city-list :cities="$cities" />
         </div>
-        <div class="h-[700px] md:max-w-[700px] mt-16 py-16 md:py-0">
+        <div class="h-[650px] md:max-w-[700px] w-full mt-12  py-16 md:py-0">
             <x-weather-widget />
         </div>
     </div>
