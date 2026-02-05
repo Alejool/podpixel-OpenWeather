@@ -18,8 +18,24 @@ class OpenWeatherService
     }
 
 
-    public function getWeatherData()
+    public function getWeatherData($lat, $lon)
     {
-       
+        $apiKey = $this->apiKey;
+        $baseUrl = $this->baseUrl;
+
+        $response = Http::get("{$baseUrl}", [
+            'lat' => $lat,
+            'lon' => $lon,
+            'appid' => $apiKey,
+            'units' => 'metric',
+            'lang' => 'es'
+        ]);
+
+        if ($response->failed()) {
+            $error = $response->json()['message'] ?? 'Error desconocido en la API de clima';
+            throw new \Exception($error);
+        }
+
+        return $response->json();
     }
 }
