@@ -6,14 +6,30 @@
     <p class="text-gray-500">Haz clic en una ciudad de la lista para ver su pronóstico del tiempo.</p>
 </div>
 
-<div id="weather-widget" class="hidden min-h-full  bg-orange-400 rounded-lg shadow-xl text-white p-8 relative overflow-hidden ">
+<!-- Skeleton para no cargar la interface direcatmente  -->
+<div id="weather-skeleton" class="hidden min-h-[650px] bg-gray-200 rounded-lg shadow-xl p-8 animate-pulse">
+    <div class="flex justify-center mb-8 py-6">
+        <div class="h-10 bg-gray-300 rounded w-48 mx-auto"></div>
+    </div>
+    <div class="flex flex-col items-center gap-8">
+        <div class="w-32 h-32 bg-gray-300 rounded-full"></div>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 w-full">
+            @for ($i = 0; $i < 6; $i++)
+                <div class="h-16 bg-gray-300 rounded">
+        </div>
+        @endfor
+    </div>
+</div>
+</div>
+
+<div id="weather-widget" class="hidden min-h-full bg-orange-400 rounded-lg shadow-xl text-white p-8 relative overflow-hidden transition-all duration-700 ease-out opacity-0 translate-y-4">
     <div class="absolute top-0 right-0 -mr-24 -mt-24 w-64 h-64 rounded-full bg-white opacity-10 blur-3xl"></div>
     <div class="absolute bottom-0 left-0 -ml-24 -mb-24 w-64 h-64 rounded-full bg-white opacity-10 blur-3xl"></div>
 
     <div class="relative z-10">
         <div class="flex justify-center mb-8 py-6">
             <div>
-                <h2 id="widget-city-name" class="text-4xl  font-bold tracking-tight">Ciudad</h2>
+                <h2 id="widget-city-name" class="text-4xl font-bold tracking-tight">Ciudad</h2>
                 <p id="widget-date" class="text-orange-100 text-xl mt-1">Fecha</p>
             </div>
         </div>
@@ -28,32 +44,44 @@
                 </div>
             </div>
 
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-8 bg-white/10 p-6 text-sm md:text-lg rounded-lg backdrop-blur-md w-full">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 bg-white/10 p-6 text-sm md:text-base rounded-lg backdrop-blur-md w-full">
                 <div class="text-center p-2">
-                    <p class="text-orange-200 mb-1 text-xs md:text-sm uppercase tracking-wider font-medium">Humedad</p>
-                    <p id="widget-humidity" class="text-lg md:text-2xl font-bold">--%</p>
+                    <p class="text-orange-200 mb-1 text-xs uppercase tracking-wider font-medium">Humedad</p>
+                    <p id="widget-humidity" class="text-lg md:text-xl font-bold">--%</p>
                 </div>
                 <div class="text-center p-2 border-l border-white/10">
-                    <p class="text-orange-200 mb-1 text-xs md:text-sm uppercase tracking-wider font-medium">Viento</p>
-                    <p id="widget-wind" class="text-lg md:text-2xl font-bold">-- m/s</p>
+                    <p class="text-orange-200 mb-1 text-xs uppercase tracking-wider font-medium">Viento</p>
+                    <p id="widget-wind" class="text-lg md:text-xl font-bold">-- m/s</p>
                 </div>
-                <div class="text-center p-2 md:border-l border-white/10">
-                    <p class="text-orange-200 mb-1 text-xs md:text-sm uppercase tracking-wider font-medium">Presión</p>
-                    <p id="widget-pressure" class="text-lg md:text-2xl font-bold">-- hPa</p>
+                <div class="text-center p-2 border-l border-white/10">
+                    <p class="text-orange-200 mb-1 text-xs uppercase tracking-wider font-medium">Presión</p>
+                    <p id="widget-pressure" class="text-lg md:text-xl font-bold">-- hPa</p>
                 </div>
-                <div class="text-center p-2 border-t md:border-t-0 border-white/10">
-                    <p class="text-orange-200 mb-1 text-xs md:text-sm uppercase tracking-wider font-medium">Nubes</p>
-                    <p id="widget-clouds" class="text-lg md:text-2xl font-bold">--%</p>
+                <div id="widget-rain-container" class="text-center p-2 border-l border-white/10 hidden">
+                    <p class="text-orange-200 mb-1 text-xs uppercase tracking-wider font-medium">Lluvia (1h)</p>
+                    <p id="widget-rain" class="text-lg md:text-xl font-bold">-- mm</p>
+                </div>
+                <!-- Lower row -->
+                <div class="text-center p-2 border-t border-white/10">
+                    <p class="text-orange-200 mb-1 text-xs uppercase tracking-wider font-medium">Nubes</p>
+                    <p id="widget-clouds" class="text-lg md:text-xl font-bold">--%</p>
                 </div>
                 <div class="text-center p-2 border-t border-l border-white/10">
-                    <p class="text-orange-200 mb-1 text-xs md:text-sm uppercase tracking-wider font-medium">Sensación</p>
-                    <p id="widget-feels-like" class="text-lg md:text-2xl font-bold">--°</p>
+                    <p class="text-orange-200 mb-1 text-xs uppercase tracking-wider font-medium">Sensación</p>
+                    <p id="widget-feels-like" class="text-lg md:text-xl font-bold">--°</p>
                 </div>
                 <div class="text-center p-2 border-t border-l border-white/10">
-                    <p class="text-orange-200 mb-1 text-xs md:text-sm uppercase tracking-wider font-medium">Visibilidad</p>
-                    <p id="widget-visibility" class="text-lg md:text-2xl font-bold">-- km</p>
+                    <p class="text-orange-200 mb-1 text-xs uppercase tracking-wider font-medium">Visibilidad</p>
+                    <p id="widget-visibility" class="text-lg md:text-xl font-bold">-- km</p>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<style>
+    .widget-fade-in {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+    }
+</style>
