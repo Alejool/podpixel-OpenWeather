@@ -61,7 +61,6 @@
                     <p class="text-orange-200 mb-1 text-xs uppercase tracking-wider font-medium">Lluvia (1h)</p>
                     <p id="widget-rain" class="text-lg md:text-xl font-bold">-- mm</p>
                 </div>
-                <!-- Lower row -->
                 <div class="text-center p-2 border-t border-white/10">
                     <p class="text-orange-200 mb-1 text-xs uppercase tracking-wider font-medium">Nubes</p>
                     <p id="widget-clouds" class="text-lg md:text-xl font-bold">--%</p>
